@@ -1,0 +1,17 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  parse:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: PowerShell syntax check
+        shell: pwsh
+        run: |
+          $errs = @()
+          Get-ChildItem -Recurse -Filter *.ps1 | ForEach-Object {
+            $e = $null
+            [System.Management.Automation.Language.Parser]::ParseFile($_.FullName, [ref]$null, [ref]$e) | Out-Null
+            if ($e) { $errs += $e }
+          }
+          if ($errs.Count) { $errs; exit 1 } else { "All scripts parse cleanly." }
