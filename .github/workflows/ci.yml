@@ -15,3 +15,14 @@ jobs:
             if ($e) { $errs += $e }
           }
           if ($errs.Count) { $errs; exit 1 } else { "All scripts parse cleanly." }
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Pester
+        shell: pwsh
+        run: Install-Module Pester -Force -Scope CurrentUser -MinimumVersion 5.0
+      - name: Run Pester tests
+        shell: pwsh
+        run: Invoke-Pester -Path tests/ -CI
