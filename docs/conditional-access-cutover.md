@@ -26,7 +26,7 @@ Microsoft says to activate replacement CA protection immediately after disabling
 
 ## Rollback order
 
-First return the changed CA policies to report-only or off and verify their states. **That alone is not a complete rollback to Security Defaults.** Microsoft's current instructions say CA policies in any state prevent enabling Security Defaults. Record their settings, delete all existing CA policies as part of the prepared recovery plan, then re-enable Security Defaults and read its state back. See [reverting to Security Defaults](https://learn.microsoft.com/en-us/microsoft-365/admin/security-and-compliance/set-up-multi-factor-authentication?view=o365-worldwide#revert-to-security-defaults-from-conditional-access-policies).
+First return the changed CA policies to report-only or off and verify their states. That alone is not a complete rollback to Security Defaults. Microsoft's current instructions say CA policies in any state prevent enabling Security Defaults. Record their settings, delete all existing CA policies as part of the prepared recovery plan, then re-enable Security Defaults and read its state back. See [reverting to Security Defaults](https://learn.microsoft.com/en-us/microsoft-365/admin/security-and-compliance/set-up-multi-factor-authentication?view=o365-worldwide#revert-to-security-defaults-from-conditional-access-policies).
 
 Do not call recovery complete because policies are off. Verify restored protection with sign-in checks. Policy deletion and re-enablement extend the possible gap, so an administrator must be ready before the first change.
 
